@@ -2,24 +2,35 @@ const priceInput = document.querySelector('.priceInput')
 const submitButton = document.querySelector('.submitButton')
 const priceList = document.querySelector('.priceList')
 const resetButton = document.querySelector('.resetButton')
+const percentSelect = document.querySelector('.percentSelect')
+const riskReward = document.querySelector('.riskReward')
 
-let submit = () => {
-    const price = calcPercent(priceInput.value)
-    if(price){
-    priceList.textContent = price
-    }
+const submit = () => {
+  const buyCost = Number(priceInput.value)
+  const percentage = Number(percentSelect.value)
+  const riskRewardRatio = Number(riskReward.value)
+  const price = calcPercent(buyCost, percentage)
+  const stopLoss = calcStopLoss(buyCost, (percentage / riskRewardRatio))
+  if (price) {
+    priceList.textContent = `Sell:${price}  Buy price:${buyCost} Stop:${stopLoss}`
+  }
 }
 
-let reset = () => {
-    priceList.textContent = ''
-    priceInput.value = ''
+const reset = () => {
+  priceList.textContent = ''
+  priceInput.value = ''
 }
 
-let calcPercent = (price, percentage) => {
-    numPrice = Number(price)
-    percentage = .03
-    calcPrice = numPrice + (numPrice * percentage)
-    return calcPrice 
+const calcPercent = (price, percentage) => {
+  const numPrice = price
+  const calcPrice = numPrice + (numPrice * percentage)
+  return calcPrice
+}
+
+const calcStopLoss = (price, percentage) => {
+  const numPrice = price
+  const calcPrice = numPrice - (numPrice * percentage)
+  return calcPrice
 }
 
 submitButton.addEventListener('click', submit)

@@ -4,6 +4,9 @@ const priceList = document.querySelector('.priceList')
 const resetButton = document.querySelector('.resetButton')
 const percentSelect = document.querySelector('.percentSelect')
 const riskReward = document.querySelector('.riskReward')
+const itemName = document.querySelector('.itemName')
+
+let priceStore = []
 
 const submit = () => {
   const buyCost = Number(priceInput.value)
@@ -12,13 +15,15 @@ const submit = () => {
   const price = calcPercent(buyCost, percentage)
   const stopLoss = calcStopLoss(buyCost, (percentage / riskRewardRatio))
   if (price) {
-    priceList.textContent = `Sell:${price}  Buy price:${buyCost} Stop:${stopLoss}`
+    priceStore += `${itemName.value} Sell:${price}  Buy price:${buyCost} Stop:${stopLoss}`
+    priceList.textContent = priceStore
   }
 }
 
 const reset = () => {
   priceList.textContent = ''
   priceInput.value = ''
+  priceStore = []
 }
 
 const calcPercent = (price, percentage) => {

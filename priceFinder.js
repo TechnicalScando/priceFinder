@@ -1,7 +1,7 @@
 const priceInput = document.querySelector('.priceInput')
-const submitButton = document.querySelector('.submitButton')
+const submitButton = document.querySelector('.submit')
 const priceList = document.querySelector('.priceList')
-const resetButton = document.querySelector('.resetButton')
+const resetButton = document.querySelector('.reset')
 const percentSelect = document.querySelector('.percentSelect')
 const riskReward = document.querySelector('.riskReward')
 const itemName = document.querySelector('.itemName')
@@ -23,6 +23,7 @@ const submit = () => {
 const reset = () => {
   priceList.textContent = ''
   priceInput.value = ''
+  itemName.value = ''
   priceStore = []
 }
 

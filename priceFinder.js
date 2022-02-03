@@ -1,10 +1,10 @@
-const priceInput = document.querySelector('.priceInput')
+const priceInput = document.querySelector('.price')
 const submitButton = document.querySelector('.submit')
 const priceList = document.querySelector('.priceList')
 const resetButton = document.querySelector('.reset')
 const percentSelect = document.querySelector('.percentSelect')
 const riskReward = document.querySelector('.riskReward')
-const itemName = document.querySelector('.itemName')
+const itemName = document.querySelector('.item')
 
 let priceStore = []
 

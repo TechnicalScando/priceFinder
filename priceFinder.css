@@ -5,6 +5,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'MateSC-Regular';
+    src: url(MateSc-Regular.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .main {
     display: flex;
     width:375px;
@@ -50,6 +57,12 @@
 
     border-radius: 5px;
     border: 1px solid #000000;
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    overflow: auto;
+    align-items: center;
 }
 
 .button {
@@ -64,10 +77,11 @@
     margin-top: 20px;
 
     font-size: 18px;
+    font-family: 'MateSC-Regular';
 }
 
 .input {
-    height: 34px;
+    height: 30px;
     width: 100%;
     background-color: #D4D4D4;
 
@@ -76,6 +90,9 @@
     box-shadow: 0px 0px 1px 1px #45320c;
 
     margin-top: 5px;
+
+    text-align: center;
+    font-size: 18px;
 }
 
 .inputLabel {
@@ -84,6 +101,8 @@
 
     font-size: 24px;
     margin-top: 5px;
+
+    font-family: 'MateSC-Regular';
 }
 
 .selectBox {
@@ -103,6 +122,8 @@
     width: 100%;
     font-size: 12px;
     text-align: center;
+
+    font-family: 'MateSC-Regular';
 }
 
 .select{
@@ -115,6 +136,9 @@
     border-radius: 4px;
     border: 1px solid #C28F22;
     box-shadow: 0px 0px 1px 1px #45320c;
+
+    font-size: 24px;
+    text-align: center;
 }
 
 .percentBox {
@@ -123,4 +147,20 @@
 
 .riskRewardBox {
     margin-right: 25px;
+    
+}
+
+.priceLine {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    flex-shrink: 0;
+    margin-top: 15px;
+
+    border-bottom: 1px solid black;
+}
+
+p {
+    margin: 0;
+    margin-left: 2px;
 }

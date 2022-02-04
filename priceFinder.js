@@ -1,12 +1,10 @@
 const priceInput = document.querySelector('.price')
 const submitButton = document.querySelector('.submit')
-const priceList = document.querySelector('.priceList')
+const priceBox = document.querySelector('.priceBox')
 const resetButton = document.querySelector('.reset')
 const percentSelect = document.querySelector('.percentSelect')
 const riskReward = document.querySelector('.riskReward')
 const itemName = document.querySelector('.item')
-
-let priceStore = []
 
 const submit = () => {
   const buyCost = Number(priceInput.value)
@@ -15,16 +13,34 @@ const submit = () => {
   const price = calcPercent(buyCost, percentage)
   const stopLoss = calcStopLoss(buyCost, (percentage / riskRewardRatio))
   if (price) {
-    priceStore += `${itemName.value} Sell:${price}  Buy price:${buyCost} Stop:${stopLoss}`
-    priceList.textContent = priceStore
+    const stringArray = [`${itemName.value}\u0020`, 'Sell: ', price, 'Buy price: ', buyCost, 'Stop: ', stopLoss]
+
+    const priceLine = document.createElement('div')
+    priceLine.className = 'priceLine'
+
+    for (let i = 0; i < stringArray.length; i++) {
+      console.log(i)
+      const newP = document.createElement('p')
+      newP.textContent = stringArray[i]
+      if (i === 2) {
+        newP.style.color = 'green'
+      } else if (i === 4) {
+        newP.style.color = 'blue'
+      } else if (i === 6) {
+        newP.style.color = 'red'
+      }
+      priceLine.appendChild(newP)
+    }
+    priceBox.appendChild(priceLine)
   }
 }
 
 const reset = () => {
-  priceList.textContent = ''
+  while (priceBox.firstChild) {
+    priceBox.removeChild(priceBox.firstChild)
+  }
   priceInput.value = ''
   itemName.value = ''
-  priceStore = []
 }
 
 const calcPercent = (price, percentage) => {
